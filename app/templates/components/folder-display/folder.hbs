@@ -1,0 +1,48 @@
+<div class="folder">
+  <div class="label" role="button" {{on 'click' this.toggleOpen}}>
+    <span class="no-select">
+      {{html-safe @prefix}}
+      {{svg-jar (if this.open "folder-open" "folder")}}
+    </span>
+    {{@model.label}}
+    <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFile)}}>
+      {{svg-jar "file-new"}}
+    </span>
+    <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFolder)}}>
+      {{svg-jar "folder-new"}}
+    </span>
+  </div>
+  {{#if this.open}}
+    {{#each @model.children as | child i |}}
+      {{#let
+        (compute (fn this.computePrefix @level i @model.children.length @isLast))
+        (eq i (dec @model.children.length))
+      as | prefixComputation isLast |}}
+        {{#if (eq child.type "file")}}
+          <FolderDisplay::File
+            @model={{child}}
+            @level={{@level}}
+            @createFile={{@createFile}}
+            @editFile={{@editFile}}
+            @deleteFile={{@deleteFile}}
+            @openFile={{@openFile}}
+            @prefix={{prefixComputation}}
+            @path={{@path}}
+          />
+        {{else if (eq child.type "folder")}}
+          <FolderDisplay::Folder
+            @model={{child}}
+            @level={{inc @level}}
+            @createFile={{@createFile}}
+            @editFile={{@editFile}}
+            @deleteFile={{@deleteFile}}
+            @openFile={{@openFile}}
+            @prefix={{prefixComputation}}
+            @isLast={{isLast}}
+            @path={{concat @path child.label "/"}}
+          />
+        {{/if}}
+      {{/let}}
+    {{/each}}
+  {{/if}}
+</div>

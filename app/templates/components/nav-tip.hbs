@@ -1,0 +1,13 @@
+<div class="nav-tip">
+  <img src={{or @cover "/raster/abstract.jpg"}}>
+  <div class="content">
+    <h3>{{@title}}</h3>
+    <p>{{@description}}</p>
+    {{#if @shortcut}}
+      <footer>
+        <span>{{@shortcut}}</span>
+        {{svg-jar "keyboard"}}
+      </footer>
+    {{/if}}
+  </div>
+</div>

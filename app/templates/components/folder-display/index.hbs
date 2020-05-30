@@ -1,0 +1,15 @@
+<div class="folder-display" {{did-insert this.updateSchema}} {{did-update this.updateSchema @namespace}}>
+  {{log 'hbs schema' @schema}}
+  {{#each @schema as |folder|}}
+    <FolderDisplay::Folder
+      @model={{folder}}
+      @level={{0}}
+      @createFile={{this.createFile}}
+      @editFile={{this.editFile}}
+      @deleteFile={{this.deleteFile}}
+      @openFile={{this.openFile}}
+      @path={{concat folder.label "/"}}
+    />
+  {{/each}}
+</div>
+

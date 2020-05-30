@@ -1,0 +1,38 @@
+{{#let (and @model.new (not this.inputMode)) as | newAndNotInputMode| }}
+  <div
+    class="file"
+    role="button"
+    {{on "click" (if newAndNotInputMode this.toggleInputMode (fn @openFile @model))}}
+    {{did-insert this.cacheElement}}
+  >
+    <span class="no-select">
+      {{html-safe @prefix}}
+      {{svg-jar (if @model.new "plus" "file")}}
+    </span>
+    {{#if this.inputMode}}
+      <input
+        type="text"
+        pattern="^[\w-]*$"
+        title="a-z  0-9  _  -"
+        {{on "keyup" (stop-propagation this.save)}}
+        {{did-insert this.inputCheck}}
+      />
+      <span role="button" {{on "click" (stop-propagation this.save)}}>
+        {{svg-jar "checkmark" class="icon-accept"}}
+      </span>
+      <span role="button" {{on "click" (stop-propagation this.toggleInputMode)}}>
+        {{svg-jar "cancel" class="icon-cancel"}}
+      </span>
+    {{else}}
+      {{@model.label}}{{if @model.extension (concat "." @model.extension)}}
+      {{#unless @model.new}}
+        <span class="hover-only" role="button" {{on "click" (stop-propagation this.toggleInputMode)}}>
+          {{svg-jar "edit"}}
+        </span>
+        <span class="hover-only" role="button" {{on "click" (stop-propagation (fn @deleteFile @path @model))}}>
+          {{svg-jar "trash"}}
+        </span>
+      {{/unless}}
+    {{/if}}
+  </div>
+{{/let}}

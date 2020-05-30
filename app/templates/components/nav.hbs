@@ -1,0 +1,22 @@
+<nav>
+  {{#each @schema as |s|}}
+    <div
+      role="button"
+      class={{if (eq @active s) "active"}}
+      {{on "click" (fn @onSelect s)}}
+    >
+      {{#if s.icon}}
+        {{svg-jar s.icon}}
+      {{else}}
+        {{slice 0 1 s.label}}
+      {{/if}}
+
+      <NavTip
+        @cover={{s.cover}}
+        @title={{s.label}}
+        @description={{s.description}}
+        @shortcut={{s.shortcut}}
+      />
+    </div>
+  {{/each}}
+</nav>

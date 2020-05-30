@@ -1,0 +1,28 @@
+nav {
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  bottom: 0;
+  width: $nav-width;
+  background: $dark-background;
+  color: $dark-text-color;
+  text-align: center;
+  > div {
+    padding: $padding;
+    position: relative;
+    svg {
+      width: 1.5rem;
+    }
+    &:hover {
+      color: $dark-active-color;
+      .nav-tip {
+        visibility: visible;
+      }
+    }
+    &.active {
+      border-left: 3px solid $dark-background-accent;
+      color: $dark-active-color;
+      background: $dark-active-background-overlay;
+    }
+  }
+}

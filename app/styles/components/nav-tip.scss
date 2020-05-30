@@ -1,0 +1,44 @@
+.nav-tip {
+  position: absolute;
+  left: 5rem;
+  top: $padding;
+  width: 16rem;
+  border: 1px solid $dark-background;
+  background: white;
+  color: initial;
+  border-radius: $border-radius;
+  overflow: hidden;
+  text-align: initial;
+  visibility: hidden;
+
+  img {
+    width: 100%;
+    max-height: 4rem;
+    object-fit: cover;
+  }
+
+  .content {
+    padding: 0.5rem;
+
+    h3 {
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: $padding;
+    }
+
+    footer {
+      text-align: right;
+      position: relative;
+      svg {
+        position: absolute;
+        right: -0.25rem;
+        bottom: -0.25rem;
+      }
+      span {
+        margin-right: 1.75rem;
+      }
+    }
+  }
+}

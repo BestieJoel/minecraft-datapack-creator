@@ -1,0 +1,13 @@
+.folder-display {
+  .file {
+    .hover-only {
+      display: none;
+    }
+    &:hover {
+      // background: rgba(0,0,0,0.025);
+      .hover-only {
+        display: initial;
+      }
+    }
+  }
+}

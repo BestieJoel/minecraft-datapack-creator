@@ -1,0 +1,53 @@
+<ModalBase>
+  <div class="modal-load-datapack">
+    {{#if newDatapack}}
+      <h3>
+        <small role="button" {{on "click" this.toggleNew}}>&lt;</small>
+        Create a new Datapack
+      </h3>
+      <form {{on "submit" (prevent-default this.createNew)}}>
+        <label>
+          <span>Name</span>
+          <Input @type="text" @value={{this.newDatapackName}} pattern="[0-9a-z-_\.]*" title="a-z  0-9  _  - ." placeholder="block_quest_3"/>
+        </label>
+
+        <label>
+          <span>Description</span>
+          <Textarea @value={{this.newDatapackDescription}} cols="80" rows="6" placeholder="A collection of tweaks..."/>
+        </label>
+
+        <button type="submit" disabled={{this.createDisabled}}>Create</button>
+      </form>
+    {{else}}
+      <h3>Get started with a datapack</h3>
+      <div class="button-container">
+        <div class="new" role="button" {{on "click" this.toggleNew}}>New</div>
+        <label class="load" role="button">
+          Load .zip
+          <input type="file" accept="application/zip"  {{on "change" this.load}} />
+        </label>
+      </div>
+      {{#if this.existingDatapacks}}
+        <div class="existing">
+          <h3>Existing Datapacks</h3>
+          <ul>
+            {{#each this.existingDatapacks as | datapack |}}
+              <li role="button">{{datapack.label}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+
+      {{#if this.exampleDatapacks}}
+        <div class="existing">
+          <h3>Example Datapacks</h3>
+          <ul>
+            {{#each this.exampleDatapacks as | datapack |}}
+              <li role="button">{{datapack.label}}</li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+</ModalBase>

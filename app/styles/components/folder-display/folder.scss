@@ -1,0 +1,14 @@
+.folder-display {
+  .folder {
+    .label {
+      .hover-only {
+        display: none;
+      }
+      &:hover {
+        .hover-only {
+          display: initial;
+        }
+      }
+    }
+  }
+}

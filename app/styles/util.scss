@@ -1,0 +1,20 @@
+// TODO currently unusued, maybe remove it y'know
+.no-pad {
+  padding: 0;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+.icon-accept {
+  color: green;
+}
+
+.icon-cancel {
+  color: red;
+}
+
+.no-select {
+  user-select: none;
+}

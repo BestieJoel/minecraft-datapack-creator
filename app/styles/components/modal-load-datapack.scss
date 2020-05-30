@@ -1,0 +1,55 @@
+$modal-load-datapack-width: 24rem;
+$modal-load-datapack-margin-top: 12vh;
+
+.modal-load-datapack {
+  background: white;
+  padding: $padding;
+  border-radius: $border-radius;
+  margin: $modal-load-datapack-margin-top auto 0;
+  max-width: $modal-load-datapack-width;
+  max-height: #{100vh - ($modal-load-datapack-margin-top * 1.15)};
+  overflow-y: auto;
+
+  .button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $padding;
+    padding: 0 $padding;
+    margin-bottom: $padding;
+
+    > * {
+      border: 1px solid black;
+      text-align: center;
+      padding: $padding;
+      margin-bottom: 0;
+
+      [type="file"] {
+        display: none;
+      }
+    }
+  }
+
+  .existing {
+    margin-bottom: $padding;
+
+    ul {
+      border: 1px solid rgba(0,0,0,0.1);
+      max-height: 8rem;
+      overflow-y: auto;
+      li {
+        margin: 0;
+        list-style: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 0.25rem;
+
+        &:hover {
+          background: rgba(0,0,0,0.1);
+        }
+
+        &:last-of-type {
+          border: none;
+        }
+      }
+    }
+  }
+}

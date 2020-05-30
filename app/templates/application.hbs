@@ -1,0 +1,31 @@
+<header>
+  <h1>Minecraft Datapack Creator</h1>
+  <span>
+    {{#each this.pageSchema as |s|}}
+      <span role="button" class={{if (eq this.section s) "active"}} {{on "click" (fn this.selectSection s)}}>
+        {{svg-jar s.icon}}
+      </span>
+    {{/each}}
+  </span>
+</header>
+
+<Nav
+  @onSelect={{this.selectSection}}
+  @active={{this.section}}
+  @schema={{this.toolSchema}}
+/>
+
+<main>
+  {{#if this.section}}
+    <AppSection::Index
+      @section={{this.section}}
+    />
+  {{/if}}
+</main>
+
+
+{{#if @model.state.modal}}
+  {{component @model.state.modal
+    applicationController=this
+  }}
+{{/if}}
