@@ -3,6 +3,7 @@ const { Model, attr } = DS;
 
 export default class AppStateModel extends Model {
   @attr() datapackId!: string;
+  @attr() namespaceId!: string;
   @attr() sectionId!: string;
   @attr() modal!: string;
 }

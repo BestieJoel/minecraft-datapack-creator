@@ -1,5 +1,4 @@
 <div class="folder-display" {{did-insert this.updateSchema}} {{did-update this.updateSchema @namespace}}>
-  {{log 'hbs schema' @schema}}
   {{#each @schema as |folder|}}
     <FolderDisplay::Folder
       @model={{folder}}

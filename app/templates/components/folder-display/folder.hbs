@@ -5,11 +5,13 @@
       {{svg-jar (if this.open "folder-open" "folder")}}
     </span>
     {{@model.label}}
-    <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFile)}}>
-      {{svg-jar "file-new"}}
-    </span>
-    <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFolder)}}>
-      {{svg-jar "folder-new"}}
+    <span class="no-select">
+      <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFile)}}>
+        {{svg-jar "file-new"}}
+      </span>
+      <span class="hover-only" role="button" {{on "click" (stop-propagation this.newFolder)}}>
+        {{svg-jar "folder-new"}}
+      </span>
     </span>
   </div>
   {{#if this.open}}

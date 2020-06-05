@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 import DatapackModel from './datapack';
 const { Model, attr, hasMany, belongsTo } = DS;
+import FolderDisplaySchemaGenerator from 'minecraft-datapack-creator/utils/folder-display-schema-generator';
 
 // const NewFileDescriptor = (label: string, model: string): FileDescriptor => ({
 //   label: `New ${label}`,
@@ -37,6 +38,12 @@ export default class NamespaceModel extends Model {
   @hasMany('recipe', { dependent: 'destroy' }) recipes!: RecipeModel[];
   //@ts-ignore
   @hasMany('tag', { dependent: 'destroy' }) tags!: TagModel[];
+
+
+
+  getFunctionFolderDisplaySchema() {
+    FolderDisplaySchemaGenerator(this, 'functions', )
+  }
 
 
   // async getFolderedNavSchema(): Promise<FileDescriptor[]> {

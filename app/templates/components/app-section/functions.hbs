@@ -1,6 +1,20 @@
 {{!-- TODO abstract folder grid to a component --}}
 <div class="folder-grid">
-  <FolderDisplay::Index />
+  <div>
+    <NamespaceSelect
+      @namespaces={{@datapack.namespaces}}
+      @currentNamespace={{@namespace}}
+      @selectNamespace={{@selectNamespace}}
+    />
+    <FolderDisplay::Index
+      @createFile={{this.createFile}}
+      @deleteFile={{this.deleteFile}}
+      @editFile={{this.editFile}}
+      @createFolder={{this.createFolder}}
+      @openFile={{this.openFile}}
+      @schema={{this.folderSchema}}
+    />
+  </div>
   <div>
     <p>TODO function editor</p>
   </div>
