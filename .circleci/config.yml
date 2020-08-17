@@ -47,8 +47,8 @@ workflows:
           version: 12.18.3
   deploy:
     jobs:
-      - deploy:
-          filters:
-            branches:
-              only:
-                -master
+      - deploy #:
+          # filters:
+          #   branches:
+          #     only:
+          #       -master
