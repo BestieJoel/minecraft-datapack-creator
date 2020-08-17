@@ -4,8 +4,10 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'minecraft-datapack-creator',
     environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: environment === 'production'
+      ? '/minecraft-datapack-creator/'
+      : '/',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
