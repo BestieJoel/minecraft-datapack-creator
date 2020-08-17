@@ -20,5 +20,4 @@ workflows:
           version: 12.18.3
   node-build:
     jobs:
-      - build:
-          version: 12.18.3
+      - build
