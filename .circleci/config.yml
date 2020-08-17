@@ -10,7 +10,7 @@ jobs:
       - image: 'cimg/base:stable'
     steps:
       - checkout
-      - node/install:
+      - node/install
       - node/install-packages
       - run: npm run build
 
