@@ -1,0 +1,57 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.0.0
+  browser-tools: circleci/browser-tools@1.0.1
+
+jobs:
+  deploy:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - node/install
+      - node/install-packages
+      - add_ssh_keys:
+          fingerprints:
+            - "a7:c3:0d:33:8c:30:32:0c:0e:83:9f:3a:69:fe:ae:bf"
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Config
+          command: git config user.name "ci" && git config user.email "bestiejoel@gmail.com"
+      - run:
+          name: Fetch Branch
+          command: git fetch
+      - run:
+          name: Checkout Branch
+          command: git checkout gh-pages
+      - run:
+          name: Clean
+          command: find . -not -path './dist*' -not -path './.git*' -not -path './README*' -not -path './LICENSE*' -delete
+      - run:
+          name: Move
+          command: mv dist/* .
+      - run:
+          name: Clean
+          command: rm -rf dist/
+      - run:
+          name: Commit
+          command: git add -A && git commit -m 'CI Deploy'
+      - run:
+          name: Push
+          command: git push origin gh-pages
+
+workflows:
+  tests:
+    jobs:
+      - node/test:
+          version: 12.18.3
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                -master
