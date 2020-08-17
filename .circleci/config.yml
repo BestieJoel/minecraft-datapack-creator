@@ -5,12 +5,14 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      node/test:
-        steps:
-          - browser-tools/install-chrome
-          - browser-tools/install-chromedriver
+      - node/test:
+          version: 12.18.3
+          steps:
+            - browser-tools/install-chrome
+            - browser-tools/install-chromedriver
   node-build:
     jobs:
       - build:
-        steps:
-          - npm run build
+          version: 12.18.3
+          steps:
+            - npm run build
