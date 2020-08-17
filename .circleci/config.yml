@@ -22,8 +22,11 @@ jobs:
           name: Config
           command: git config user.name "ci" && git config user.email "bestiejoel@gmail.com"
       - run:
+          name: Fetch Branch
+          command: git fetch
+      - run:
           name: Checkout Branch
-          command: git checkout -b gh-pages
+          command: git checkout gh-pages
       - run:
           name: Clean
           command: find . -not -path './dist*' -not -path './.git*' -not -path './README*' -not -path './LICENSE*' -delete
