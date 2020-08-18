@@ -1,5 +1,5 @@
 <div class="nav-tip">
-  <img src={{or @cover "/raster/abstract.jpg"}}>
+  <img src={{root-url (asset-map (or @cover "/raster/abstract.jpg"))}}>
   <div class="content">
     <h3>{{@title}}</h3>
     <p>{{@description}}</p>
